@@ -2,6 +2,7 @@ import Layout from "../components/UI/Layout";
 import { axiosClient } from "../api/axiosClient";
 import { useQuery } from "@tanstack/react-query";
 import { Utility } from "../types/Utility";
+import { Suspense } from "react";
 
 export default function MainPage(): React.ReactNode {
   async function getUtilitiesData(): Promise<Utility[]> {
@@ -15,10 +16,6 @@ export default function MainPage(): React.ReactNode {
     queryFn: getUtilitiesData,
   });
 
-  if (!data || isPending) {
-    return <p>Loading...</p>;
-  }
-
   if (isError) {
     return <p>Error Occurred!</p>;
   }
@@ -28,9 +25,11 @@ export default function MainPage(): React.ReactNode {
       <div className="w-full h-full flex justify-center items-center">
         <div className="w-3/4 h-2/3 rounded-lg">
           <p>MainPage</p>
-          {data.map((util) => (
-            <p key={util.id}>{util.name}</p>
-          ))}
+          <Suspense fallback={<p>Loading...</p>}>
+            {!isPending &&
+              data &&
+              data.map((util) => <p key={util.id}>{util.name}</p>)}
+          </Suspense>
         </div>
       </div>
     </Layout>
