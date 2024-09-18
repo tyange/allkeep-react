@@ -1,8 +1,10 @@
-import Layout from "../components/UI/Layout";
-import { axiosClient } from "../api/axiosClient";
-import { useQuery } from "@tanstack/react-query";
-import { Utility } from "../types/Utility";
 import { Suspense } from "react";
+import { useQuery } from "@tanstack/react-query";
+
+import { axiosClient } from "../api/axiosClient";
+import { Utility } from "../types/Utility";
+
+import Layout from "../components/UI/Layout";
 
 export default function MainPage(): React.ReactNode {
   async function getUtilitiesData(): Promise<Utility[]> {
