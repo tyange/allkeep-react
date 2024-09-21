@@ -1,9 +1,22 @@
+import { useRef } from "react";
 import inputTextIcon from "../../assets/input-field-svgrepo-com.svg";
+import CommonInput from "../CommonInput";
 
-export default function SideKick(): React.ReactNode {
+type SideKickProps = {
+  addElement: (elm: React.ReactNode) => void;
+};
+
+export default function SideKick({
+  addElement,
+}: SideKickProps): React.ReactNode {
+  const commonInput = useRef(<CommonInput />);
+
   return (
     <div className="join join-vertical absolute -right-24 top-1">
-      <button className="btn join-item w-20">
+      <button
+        className="btn join-item w-20"
+        onClick={() => addElement(commonInput.current)}
+      >
         <img
           className="w-full"
           src={inputTextIcon}
