@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import { Link } from "react-router-dom";
 import { useQuery } from "@tanstack/react-query";
 
 import { axiosClient } from "../api/axiosClient";
@@ -32,7 +33,11 @@ export default function MainPage(): React.ReactNode {
           <Suspense fallback={<Spinner size={Size.LARGE} />}>
             {!isPending &&
               data &&
-              data.map((util) => <p key={util.id}>{util.name}</p>)}
+              data.map((util) => (
+                <div key={util.id}>
+                  <Link to={`/${util.name}`}>{util.name}</Link>
+                </div>
+              ))}
           </Suspense>
         </div>
       </div>
