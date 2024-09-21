@@ -1,4 +1,4 @@
-import ArtBoard from "../components/UI/ArtBoard";
+import ArtBoard from "../components/FreeForAllForm/ArtBoard";
 import Layout from "../components/UI/Layout";
 
 export default function FreeForAllFormPage(): React.ReactNode {
