@@ -1,5 +1,5 @@
 import { useRef } from "react";
-import inputTextIcon from "../../assets/input-field-svgrepo-com.svg";
+import inputIcon from "../../assets/text-input-svgrepo-com.svg";
 import CommonInput from "../CommonInput";
 
 type SideKickProps = {
@@ -19,7 +19,7 @@ export default function SideKick({
       >
         <img
           className="w-full"
-          src={inputTextIcon}
+          src={inputIcon}
           alt="text 타입의 input 요소를 추가하는 버튼"
         />
       </button>
