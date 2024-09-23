@@ -3,6 +3,7 @@ import { useState } from "react";
 import Layout from "../components/UI/Layout";
 import ArtBoard from "../components/FreeForAllForm/ArtBoard";
 import SideKick from "../components/FreeForAllForm/SideKick";
+import ArtBoardItemContainer from "../components/FreeForAllForm/ArtBoardItemContainer";
 
 export default function FreeForAllFormPage(): React.ReactNode {
   const [elementsInForm, setElementsInForm] = useState<React.ReactNode[]>([]);
@@ -15,7 +16,11 @@ export default function FreeForAllFormPage(): React.ReactNode {
     <Layout>
       <div className="flex h-full w-full items-center justify-center gap-20">
         <div className="relative">
-          <ArtBoard>{elementsInForm}</ArtBoard>
+          <ArtBoard>
+            {elementsInForm.map((elm) => (
+              <ArtBoardItemContainer>{elm}</ArtBoardItemContainer>
+            ))}
+          </ArtBoard>
           <SideKick addElement={addElement} />
         </div>
       </div>
